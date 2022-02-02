@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'widgets/period_widget.dart';
-import 'widgets/first_three_wedget.dart';
-import 'widgets/score_list_widget.dart';
+import 'widgets/period.dart';
+import 'widgets/first_three.dart';
+import 'widgets/score_list.dart';
 
-class LeaderBoard extends StatefulWidget {
-  const LeaderBoard({Key? key}) : super(key: key);
+class LeaderBoardPage extends StatefulWidget {
+  const LeaderBoardPage({Key? key}) : super(key: key);
   @override
-  _LeaderBoard createState() => _LeaderBoard();
+  _LeaderBoardPage createState() => _LeaderBoardPage();
 }
 
-class _LeaderBoard extends State<LeaderBoard> {
+class _LeaderBoardPage extends State<LeaderBoardPage> {
   void _addScore() {
     setState(() {});
   }
@@ -29,7 +29,6 @@ class _LeaderBoard extends State<LeaderBoard> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[Period(), FirstThree(), ScoreList()],
         ),
       ),
