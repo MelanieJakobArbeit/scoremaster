@@ -6,6 +6,8 @@ void main() {
   runApp(const MyApp());
 }
 
+// TODO schön, dass du schon einen Einstieg gefunden hast. Bitte orientiere dich beim Ablauf an der PDF,
+//  und schau nochmal rein, da steht auch eine Kleinigkeit zum MyApp widget ;)
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
