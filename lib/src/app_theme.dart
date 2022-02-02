@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-// TODO auch hier bitte die Code Richtlinien berücksichtigen. Der korrekte Name für die Datei ist app_theme.dart
 class AppTheme {
   AppTheme._();
 
