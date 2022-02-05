@@ -11,7 +11,6 @@ class _ScoreList extends State<ScoreList> {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
       children: const [
         Text('1. Elisabeth'),
         Text('2. Frank'),

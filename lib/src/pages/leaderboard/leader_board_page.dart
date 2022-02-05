@@ -25,11 +25,24 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
           tooltip: 'go back',
           color: Colors.white,
         ),
-        elevation: 0,
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
-          children: const <Widget>[Period(), FirstThree(), ScoreList()],
+          children: const <Widget>[
+            Expanded(
+              flex: 1,
+              child: Period(),
+            ),
+            Expanded(
+              flex: 4,
+              child: FirstThree(),
+            ),
+            Expanded(
+              flex: 8,
+              child: ScoreList(),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
