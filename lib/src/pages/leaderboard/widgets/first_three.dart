@@ -14,17 +14,17 @@ class _FirstThree extends State<FirstThree> {
       children: const <Widget>[
         Positioned.fill(
           child: Align(
-            alignment: Alignment(0.2, 0.6),
-            child: FirstThreeUser(),
+            alignment: Alignment(0.2, 2),
+            child: FirstThreeUser(radiusImage: 45, radiusBackground: 48),
           ),
         ),
         Positioned.fill(
           child: Align(
-            alignment: Alignment(-0.2, 0.6),
-            child: FirstThreeUser(),
+            alignment: Alignment(-0.2, 2),
+            child: FirstThreeUser(radiusImage: 45, radiusBackground: 48),
           ),
         ),
-        Center(child: FirstThreeUser()),
+        Center(child: FirstThreeUser(radiusImage: 55, radiusBackground: 60)),
       ],
     );
   }

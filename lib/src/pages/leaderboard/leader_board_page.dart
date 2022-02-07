@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'widgets/period.dart';
 import 'widgets/first_three.dart';
 import 'widgets/score_list.dart';
+import '../../app_flex.dart';
 
 class LeaderBoardPage extends StatefulWidget {
   const LeaderBoardPage({Key? key}) : super(key: key);
@@ -31,15 +32,14 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
         child: Column(
           children: const <Widget>[
             Expanded(
-              flex: 1,
               child: Period(),
             ),
             Expanded(
-              flex: 4,
+              flex: AppFlex.m,
               child: FirstThree(),
             ),
             Expanded(
-              flex: 8,
+              flex: AppFlex.l,
               child: ScoreList(),
             ),
           ],

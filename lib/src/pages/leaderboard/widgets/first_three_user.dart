@@ -1,35 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:scoremaster/src/app_theme.dart';
+import 'package:scoremaster/src/pages/leaderboard/widgets/user_Icon.dart';
 
 class FirstThreeUser extends StatefulWidget {
-  const FirstThreeUser({Key? key}) : super(key: key);
+  final double radiusImage;
+  final double radiusBackground;
+  const FirstThreeUser({
+    Key? key,
+    this.radiusImage = 0,
+    this.radiusBackground = 0,
+  }) : super(key: key);
   @override
   _FirstThreeUser createState() => _FirstThreeUser();
 }
 
 class _FirstThreeUser extends State<FirstThreeUser> {
-  double pictureHeight = 100;
-  double picturewidth = 100;
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
-      children: const <Widget>[
-        Text('Ranking'),
-        Icon(
+      children: <Widget>[
+        const Text('Ranking'),
+        const Icon(
           Icons.arrow_drop_up,
           size: 10,
         ),
-        CircleAvatar(
-          radius: 55,
-          backgroundColor: AppColors.accent,
-          child: CircleAvatar(
-            radius: 50,
-            backgroundImage: AssetImage('mock/pictures/profile-1.jpg'),
-          ),
+        UserIcon(
+          radiusImage: widget.radiusImage,
+          radiusBackground: widget.radiusBackground,
         ),
-        Text('Name'),
-        Text('Score'),
+        const Text('Name'),
+        const Text('Score'),
       ],
     );
   }
