@@ -12,19 +12,17 @@ class _FirstThree extends State<FirstThree> {
   Widget build(BuildContext context) {
     return Stack(
       children: const <Widget>[
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment(0.2, 2),
-            child: FirstThreeUser(radiusImage: 45, radiusBackground: 48),
-          ),
+        Positioned(
+          top: 50,
+          left: 100,
+          child: FirstThreeUser(radiusImage: 45, radiusBackground: 48),
         ),
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment(-0.2, 2),
-            child: FirstThreeUser(radiusImage: 45, radiusBackground: 48),
-          ),
+        Positioned(
+          top: 50,
+          right: 100,
+          child: FirstThreeUser(radiusImage: 45, radiusBackground: 48),
         ),
-        Center(child: FirstThreeUser(radiusImage: 55, radiusBackground: 60)),
+        FirstThreeUser(radiusImage: 55, radiusBackground: 60),
       ],
     );
   }

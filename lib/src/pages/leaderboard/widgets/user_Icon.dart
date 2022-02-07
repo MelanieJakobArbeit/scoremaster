@@ -18,7 +18,7 @@ class _UserIcon extends State<UserIcon> {
       backgroundColor: AppColors.accent,
       child: CircleAvatar(
         radius: widget.radiusImage,
-        backgroundImage: const AssetImage('mock/pictures/profile-1.jpg'),
+        backgroundImage: const AssetImage('assets/mock/pictures/profile-1.jpg'),
       ),
     );
   }

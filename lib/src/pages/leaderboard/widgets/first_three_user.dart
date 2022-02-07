@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:scoremaster/src/app_spacing.dart';
 import 'package:scoremaster/src/app_theme.dart';
 import 'package:scoremaster/src/pages/leaderboard/widgets/user_Icon.dart';
+
+import '../../../app_icon_size.dart';
 
 class FirstThreeUser extends StatefulWidget {
   final double radiusImage;
@@ -17,21 +20,40 @@ class FirstThreeUser extends StatefulWidget {
 class _FirstThreeUser extends State<FirstThreeUser> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        const Text('Ranking'),
-        const Icon(
-          Icons.arrow_drop_up,
-          size: 10,
-        ),
-        UserIcon(
-          radiusImage: widget.radiusImage,
-          radiusBackground: widget.radiusBackground,
-        ),
-        const Text('Name'),
-        const Text('Score'),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(
+        bottom: AppSpacing.xl,
+        top: AppSpacing.l,
+        left: AppSpacing.xxxl,
+        right: AppSpacing.xxxl,
+      ),
+      child: Column(
+        children: <Widget>[
+          const Text('Ranking'),
+          const Padding(
+            padding: EdgeInsets.only(
+              top: AppSpacing.xs,
+              bottom: AppSpacing.l,
+            ),
+            child: Icon(
+              Icons.arrow_drop_up,
+              size: AppIconSize.xl,
+            ),
+          ),
+          UserIcon(
+            radiusImage: widget.radiusImage,
+            radiusBackground: widget.radiusBackground,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(
+              top: AppSpacing.l,
+              bottom: AppSpacing.xs,
+            ),
+            child: Text('Name'),
+          ),
+          const Text('Score'),
+        ],
+      ),
     );
   }
 }
