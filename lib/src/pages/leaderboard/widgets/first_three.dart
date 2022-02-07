@@ -8,22 +8,42 @@ class FirstThree extends StatefulWidget {
 }
 
 class _FirstThree extends State<FirstThree> {
+  static const double height = 300.0;
+  static const double width = 500.0;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: const <Widget>[
-        Positioned(
-          top: 50,
-          left: 100,
-          child: FirstThreeUser(radiusImage: 45, radiusBackground: 48),
-        ),
-        Positioned(
-          top: 50,
-          right: 100,
-          child: FirstThreeUser(radiusImage: 45, radiusBackground: 48),
-        ),
-        FirstThreeUser(radiusImage: 55, radiusBackground: 60),
-      ],
+    return SizedBox(
+      width: width,
+      height: height,
+      child: Stack(
+        children: const <Widget>[
+          Positioned(
+            top: 50,
+            left: 115,
+            child: FirstThreeUser(
+              radiusImage: 45,
+              radiusBackground: 48,
+            ),
+          ),
+          Positioned(
+            top: 50,
+            right: 115,
+            child: FirstThreeUser(
+              radiusImage: 45,
+              radiusBackground: 48,
+            ),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: FirstThreeUser(
+              radiusImage: 55,
+              radiusBackground: 60,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

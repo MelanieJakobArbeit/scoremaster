@@ -7,5 +7,4 @@ class AppSpacing {
   static const l = m * 1.5;
   static const xl = l * 2;
   static const xxl = xl * 2;
-  static const xxxl = xxl * 2;
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:scoremaster/src/app_spacing.dart';
-import 'package:scoremaster/src/app_theme.dart';
 import 'package:scoremaster/src/pages/leaderboard/widgets/user_Icon.dart';
 
 import '../../../app_icon_size.dart';
@@ -8,10 +7,11 @@ import '../../../app_icon_size.dart';
 class FirstThreeUser extends StatefulWidget {
   final double radiusImage;
   final double radiusBackground;
+  static const double initialValue = 0;
   const FirstThreeUser({
     Key? key,
-    this.radiusImage = 0,
-    this.radiusBackground = 0,
+    this.radiusImage = initialValue,
+    this.radiusBackground = initialValue,
   }) : super(key: key);
   @override
   _FirstThreeUser createState() => _FirstThreeUser();
@@ -24,8 +24,6 @@ class _FirstThreeUser extends State<FirstThreeUser> {
       padding: const EdgeInsets.only(
         bottom: AppSpacing.xl,
         top: AppSpacing.l,
-        left: AppSpacing.xxxl,
-        right: AppSpacing.xxxl,
       ),
       child: Column(
         children: <Widget>[

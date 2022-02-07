@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'widgets/period.dart';
 import 'widgets/first_three.dart';
 import 'widgets/score_list.dart';
+import '../../services/game_service.dart';
 
 class LeaderBoardPage extends StatefulWidget {
   const LeaderBoardPage({Key? key}) : super(key: key);
@@ -29,10 +30,11 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
       ),
       body: Center(
         child: Column(
-          children: const <Widget>[
-            Period(),
-            FirstThree(),
-            Expanded(
+          children: <Widget>[
+            Text(GameService.instance.getGames().toString()),
+            const Period(),
+            const FirstThree(),
+            const Expanded(
               child: ScoreList(),
             ),
           ],
