@@ -10,12 +10,12 @@ class ScoreListUser extends StatefulWidget {
 }
 
 class _ScoreListUser extends State<ScoreListUser> {
-  double radius = 50;
+  double radiusBackgroundColor = 50;
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(radius),
+        borderRadius: BorderRadius.circular(radiusBackgroundColor),
         color: AppColors.primary,
       ),
       child: Row(
