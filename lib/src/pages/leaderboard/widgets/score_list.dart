@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:scoremaster/src/app_spacing.dart';
+import 'package:scoremaster/src/pages/leaderboard/widgets/score_list_element.dart';
 
 class ScoreList extends StatefulWidget {
   const ScoreList({Key? key}) : super(key: key);
@@ -8,23 +8,19 @@ class ScoreList extends StatefulWidget {
 }
 
 class _ScoreList extends State<ScoreList> {
+  int items = 10;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: AppSpacing.xxl,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          Text('1. Elisabeth'),
-          Text('2. Frank'),
-          Text('3. Manfred'),
-          Text('4. Lina'),
-          Text('5. Anneliese'),
-          Text('6. Roland'),
-        ],
-      ),
+    return ListView.separated(
+      itemBuilder: (BuildContext context, int index) {
+        return const ScoreListElement();
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return const SizedBox(
+          height: 15,
+        );
+      },
+      itemCount: items,
     );
   }
 }
