@@ -15,11 +15,20 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
     setState(() {});
   }
 
+  String _gameName = '';
+  _LeaderBoardPage() {
+    GameService.instance.getGames().then(
+          (value) => setState(() {
+            _gameName = value.data.first.name;
+          }),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Leaderboard'),
+        title: Text('Leaderboard ' + _gameName),
         leading: IconButton(
           onPressed: () {},
           icon: const Icon(Icons.arrow_back_ios),
@@ -30,11 +39,10 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
       ),
       body: Center(
         child: Column(
-          children: <Widget>[
-            Text(GameService.instance.getGames().toString()),
-            const Period(),
-            const FirstThree(),
-            const Expanded(
+          children: const <Widget>[
+            Period(),
+            FirstThree(),
+            Expanded(
               child: ScoreList(),
             ),
           ],
