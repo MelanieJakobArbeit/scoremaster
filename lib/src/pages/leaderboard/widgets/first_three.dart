@@ -8,7 +8,7 @@ class FirstThree extends StatefulWidget {
 }
 
 class _FirstThree extends State<FirstThree> {
-  static const double height = 300.0;
+  static const double height = 280.0;
   static const double width = 500.0;
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _FirstThree extends State<FirstThree> {
         children: const <Widget>[
           Positioned(
             top: 50,
-            left: 115,
+            left: 220,
             child: FirstThreeUser(
               radiusImage: 45,
               radiusBackground: 48,
@@ -27,7 +27,7 @@ class _FirstThree extends State<FirstThree> {
           ),
           Positioned(
             top: 50,
-            right: 115,
+            right: 220,
             child: FirstThreeUser(
               radiusImage: 45,
               radiusBackground: 48,

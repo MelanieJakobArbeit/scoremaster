@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:scoremaster/src/app_spacing.dart';
+import 'package:scoremaster/src/pages/leaderboard/widgets/rank.dart';
 import 'package:scoremaster/src/pages/leaderboard/widgets/user_Icon.dart';
 
 import '../../../app_icon_size.dart';
+import '../../../app_theme.dart';
 
 class FirstThreeUser extends StatefulWidget {
   final double radiusImage;
@@ -27,17 +29,7 @@ class _FirstThreeUser extends State<FirstThreeUser> {
       ),
       child: Column(
         children: <Widget>[
-          const Text('Ranking'),
-          const Padding(
-            padding: EdgeInsets.only(
-              top: AppSpacing.xs,
-              bottom: AppSpacing.l,
-            ),
-            child: Icon(
-              Icons.arrow_drop_up,
-              size: AppIconSize.xl,
-            ),
-          ),
+          const Rank(),
           UserIcon(
             radiusImage: widget.radiusImage,
             radiusBackground: widget.radiusBackground,
@@ -49,7 +41,10 @@ class _FirstThreeUser extends State<FirstThreeUser> {
             ),
             child: Text('Name'),
           ),
-          const Text('Score'),
+          const Text(
+            'Score',
+            style: TextStyle(color: AppColors.accent),
+          ),
         ],
       ),
     );
