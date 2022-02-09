@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scoremaster/src/services/score_service.dart';
 import 'widgets/period.dart';
 import 'widgets/first_three.dart';
 import 'widgets/score_list.dart';
@@ -16,9 +17,17 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
   }
 
   String _gameName = '';
+  List scoreList = [];
   _LeaderBoardPage() {
     GameService.instance.getGames().then(
           (value) => setState(() {
+            ScoreService.instance.findAllByGameUid(value.data.first.uid).then(
+                  (value) => {
+                    print('scorelist' + value.toString()),
+                    scoreList = value,
+                  },
+                );
+
             _gameName = value.data.first.name;
           }),
         );
