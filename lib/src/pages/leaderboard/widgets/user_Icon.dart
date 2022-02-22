@@ -4,8 +4,7 @@ import 'package:scoremaster/src/app_theme.dart';
 class UserIcon extends StatefulWidget {
   final double radiusImage;
   final double radiusBackground;
-  const UserIcon({Key? key, this.radiusImage = 0, this.radiusBackground = 0})
-      : super(key: key);
+  const UserIcon({Key? key, this.radiusImage = 0, this.radiusBackground = 0}) : super(key: key);
   @override
   _UserIcon createState() => _UserIcon();
 }
