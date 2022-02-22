@@ -53,7 +53,7 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
                   _threeTopUser = value.sublist(numberFirstElement, numberTop),
                 },
               ),
-          builder: (context, userSoreSnap) {
+          builder: (context, userSoreSnapshot) {
             return Column(
               children: <Widget>[
                 const Period(),

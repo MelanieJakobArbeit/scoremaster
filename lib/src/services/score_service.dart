@@ -16,21 +16,20 @@ class ScoreService {
   Future<List<UserWithScoreModel>> findAllByGameUid(
     String gameUid,
   ) async {
-    var response =
-        await rootBundle.loadString('../../../assets/mock/data/scores.json');
+    var response = await rootBundle.loadString('../../../assets/mock/data/scores.json');
+
     List<dynamic> scores = json.decode(response);
     ScoreListModel scoreList = ScoreListModel.fromJson({'data': scores});
     List<UserWithScoreModel> userWithScoreListByGame = [];
+
     for (var scoreValue in scoreList.data) {
       if (scoreValue.gameUid == gameUid) {
-        UserModel user =
-            await UserService.instance.findOneByUid(scoreValue.userUid);
-        userWithScoreListByGame
-            .add(UserWithScoreModel(user: user, score: scoreValue));
+        UserModel user = await UserService.instance.findOneByUid(scoreValue.userUid);
+        userWithScoreListByGame.add(UserWithScoreModel(user: user, score: scoreValue));
       }
     }
-    userWithScoreListByGame
-        .sort((b, a) => a.score.score.compareTo(b.score.score));
+
+    userWithScoreListByGame.sort((b, a) => a.score.score.compareTo(b.score.score));
 
     return userWithScoreListByGame;
   }

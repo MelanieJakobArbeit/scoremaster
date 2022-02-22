@@ -15,14 +15,18 @@ class FirstThree extends StatefulWidget {
 class _FirstThree extends State<FirstThree> {
   static const double height = 280.0;
   static const double width = 500.0;
+
   static const double topPostion = 50;
   static const double centerPosition = 0;
   static const double horizontalPosition = 220;
+
   static const double radiusImageWinner = 55;
   static const double radiusBackgroundWinner = 60;
   static const double radiusImage = 45;
   static const double radiusBackground = 48;
+
   static const int numberMiddle = 1;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

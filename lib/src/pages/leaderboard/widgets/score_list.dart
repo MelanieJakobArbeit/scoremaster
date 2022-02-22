@@ -13,13 +13,15 @@ class ScoreList extends StatefulWidget {
 }
 
 class _ScoreList extends State<ScoreList> {
+  static const int indexBalancer = 4;
+
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (BuildContext context, int index) {
         return ScoreListElement(
           userScore: widget.userScore[index],
-          rank: index + 4,
+          rank: index + indexBalancer,
         );
       },
       separatorBuilder: (BuildContext context, int index) {
