@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:scoremaster/src/models/game_model.dart';
+import 'package:scoremaster/src/models/user_with_score_model.dart';
+import 'package:scoremaster/src/services/score_service.dart';
 import 'widgets/period.dart';
 import 'widgets/first_three.dart';
 import 'widgets/score_list.dart';
@@ -11,24 +14,29 @@ class LeaderBoardPage extends StatefulWidget {
 }
 
 class _LeaderBoardPage extends State<LeaderBoardPage> {
-  void _addScore() {
-    setState(() {});
-  }
+  static const int numberTop = 3;
+  static const int numberFirstElement = 0;
 
-  String _gameName = '';
+  List<UserWithScoreModel> _userScore = [];
+  List<UserWithScoreModel> _threeTopUser = [];
+  GameModel _game = const GameModel(name: '', uid: '');
+  List<UserWithScoreModel> userScoreList = [];
   _LeaderBoardPage() {
     GameService.instance.getGames().then(
           (value) => setState(() {
-            _gameName = value.data.first.name;
+            _game = value.data.first;
           }),
         );
+  }
+  void _addScore() {
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Leaderboard ' + _gameName),
+        title: Text('Leaderboard ' + _game.name),
         leading: IconButton(
           onPressed: () {},
           icon: const Icon(Icons.arrow_back_ios),
@@ -38,14 +46,24 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
         centerTitle: true,
       ),
       body: Center(
-        child: Column(
-          children: const <Widget>[
-            Period(),
-            FirstThree(),
-            Expanded(
-              child: ScoreList(),
-            ),
-          ],
+        child: FutureBuilder(
+          future: ScoreService.instance.findAllByGameUid(_game.uid).then(
+                (value) => {
+                  _userScore = value.sublist(numberTop),
+                  _threeTopUser = value.sublist(numberFirstElement, numberTop),
+                },
+              ),
+          builder: (context, userSoreSnapshot) {
+            return Column(
+              children: <Widget>[
+                const Period(),
+                FirstThree(users: _threeTopUser),
+                Expanded(
+                  child: ScoreList(userScore: _userScore),
+                ),
+              ],
+            );
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(

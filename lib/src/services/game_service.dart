@@ -19,13 +19,4 @@ class GameService {
 
     return gameList;
   }
-
-  // Future<GameModel> findOne(String uid) async {
-  //   await Future.delayed(const Duration(milliseconds: 200));
-
-  //   return const GameModel(
-  //     uid: 'example',
-  //     name: 'example',
-  //   );
-  // }
 }

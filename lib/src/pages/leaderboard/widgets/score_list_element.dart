@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:scoremaster/src/app_spacing.dart';
+import 'package:scoremaster/src/models/user_with_score_model.dart';
 import 'package:scoremaster/src/pages/leaderboard/widgets/rank.dart';
 import 'package:scoremaster/src/pages/leaderboard/widgets/score_list_user.dart';
 
 class ScoreListElement extends StatefulWidget {
-  const ScoreListElement({Key? key}) : super(key: key);
+  final UserWithScoreModel userScore;
+  final int rank;
+  const ScoreListElement({
+    Key? key,
+    required this.userScore,
+    required this.rank,
+  }) : super(key: key);
   @override
   _ScoreListElement createState() => _ScoreListElement();
 }
@@ -17,11 +24,11 @@ class _ScoreListElement extends State<ScoreListElement> {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Rank(),
+          children: [
+            Rank(rank: widget.rank),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: AppSpacing.xl),
-              child: ScoreListUser(),
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+              child: ScoreListUser(userScore: widget.userScore),
             ),
           ],
         ),

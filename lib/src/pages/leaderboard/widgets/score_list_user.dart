@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:scoremaster/src/app_spacing.dart';
+import 'package:scoremaster/src/models/user_with_score_model.dart';
 
 import '../../../app_theme.dart';
 
 class ScoreListUser extends StatefulWidget {
-  const ScoreListUser({Key? key}) : super(key: key);
+  final UserWithScoreModel userScore;
+  const ScoreListUser({
+    Key? key,
+    required this.userScore,
+  }) : super(key: key);
   @override
   _ScoreListUser createState() => _ScoreListUser();
 }
@@ -19,20 +24,25 @@ class _ScoreListUser extends State<ScoreListUser> {
         color: AppColors.primary,
       ),
       child: Row(
-        children: const [
-          CircleAvatar(
+        children: [
+          const CircleAvatar(
             radius: 25,
             backgroundImage: AssetImage('assets/mock/pictures/profile-1.jpg'),
           ),
           Padding(
-            padding: EdgeInsets.only(left: AppSpacing.l, right: AppSpacing.xxl),
-            child: Text('Name'),
+            padding: const EdgeInsets.only(
+              left: AppSpacing.l,
+              right: AppSpacing.xxl,
+            ),
+            child: Text(
+              widget.userScore.user.username,
+            ),
           ),
           Padding(
-            padding: EdgeInsets.only(right: AppSpacing.l),
+            padding: const EdgeInsets.only(right: AppSpacing.l),
             child: Text(
-              'Punkte',
-              style: TextStyle(color: AppColors.accent),
+              widget.userScore.score.score.toString(),
+              style: const TextStyle(color: AppColors.accent),
             ),
           ),
         ],
