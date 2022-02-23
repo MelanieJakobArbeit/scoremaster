@@ -20,8 +20,27 @@ class ScoreListElement extends StatefulWidget {
 
 class _ScoreListElement extends State<ScoreListElement> {
   final _formKey = GlobalKey<FormState>();
-  final LocalStorage storage = new LocalStorage('users');
+  final LocalStorage storage = LocalStorage('scroes');
+
   TextEditingController newScoreController = TextEditingController();
+  int score = -1;
+
+  void getScore() {
+    setState(() {
+      if (storage.getItem(widget.userScore.user.uid) != null) {
+        score = int.parse(storage.getItem(widget.userScore.user.uid));
+      }
+    });
+  }
+
+  void _saveNewScore(userId) {
+    storage.setItem(
+      userId,
+      newScoreController.text,
+    );
+    getScore();
+    Navigator.pop(context, 'OK');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +70,7 @@ class _ScoreListElement extends State<ScoreListElement> {
                     child: const Text('Abbrechen'),
                   ),
                   TextButton(
-                    onPressed: () => saveNewScore(widget.userScore.user.uid),
+                    onPressed: () => _saveNewScore(widget.userScore.user.uid),
                     child: const Text('Speichern'),
                   ),
                 ],
@@ -64,21 +83,15 @@ class _ScoreListElement extends State<ScoreListElement> {
               Rank(rank: widget.rank),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
-                child: ScoreListUser(userScore: widget.userScore),
+                child: ScoreListUser(
+                  userScore: widget.userScore,
+                  savedScores: score != -1 ? score : widget.userScore.score.score,
+                ),
               ),
             ],
           ),
         ),
       ],
     );
-  }
-
-  void saveNewScore(userId) {
-    print('newScoreController' + newScoreController.text);
-    // storage.setItem(
-    //   userId,
-    //   newScoreController,
-    // );
-    Navigator.pop(context, 'OK');
   }
 }

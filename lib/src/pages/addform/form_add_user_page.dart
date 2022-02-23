@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class AddFormPage extends StatefulWidget {
-  const AddFormPage({Key? key}) : super(key: key);
+class FormAddUserPage extends StatefulWidget {
+  const FormAddUserPage({Key? key}) : super(key: key);
   @override
-  _AddFormPage createState() => _AddFormPage();
+  _FormAddUserPage createState() => _FormAddUserPage();
 }
 
-class _AddFormPage extends State<AddFormPage> {
+class _FormAddUserPage extends State<FormAddUserPage> {
   static const double spaceBetweenVertical = 20;
   static const double padding = 10;
   static const double buttonSpace = 10;
@@ -22,7 +22,7 @@ class _AddFormPage extends State<AddFormPage> {
     return null;
   }
 
-  void restForm() {
+  void resetForm() {
     _formKey.currentState?.reset();
   }
 
@@ -43,7 +43,11 @@ class _AddFormPage extends State<AddFormPage> {
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.only(top: spaceBetweenVertical, left: padding, right: padding),
+          padding: const EdgeInsets.only(
+            top: spaceBetweenVertical,
+            left: padding,
+            right: padding,
+          ),
           child: Column(
             children: <Widget>[
               Wrap(
@@ -88,7 +92,7 @@ class _AddFormPage extends State<AddFormPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       ElevatedButton(
-                        onPressed: () => restForm(),
+                        onPressed: () => resetForm(),
                         child: const Text('Löschen'),
                       ),
                       const SizedBox(width: buttonSpace),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoremaster/src/models/game_model.dart';
 import 'package:scoremaster/src/models/user_with_score_model.dart';
-import 'package:scoremaster/src/pages/addform/add_form_page.dart';
 import 'package:scoremaster/src/services/score_service.dart';
 import 'widgets/period.dart';
 import 'widgets/first_three.dart';
@@ -12,18 +11,20 @@ import 'package:go_router/go_router.dart';
 class LeaderBoardPage extends StatefulWidget {
   const LeaderBoardPage({Key? key}) : super(key: key);
   @override
-  _LeaderBoardPage createState() => _LeaderBoardPage();
+  _LeaderBoardState createState() => _LeaderBoardState();
 }
 
-class _LeaderBoardPage extends State<LeaderBoardPage> {
+class _LeaderBoardState extends State<LeaderBoardPage> {
   static const int numberTop = 3;
+
   static const int numberFirstElement = 0;
 
   List<UserWithScoreModel> _userScore = [];
   List<UserWithScoreModel> _threeTopUser = [];
   GameModel _game = const GameModel(name: '', uid: '');
   List<UserWithScoreModel> userScoreList = [];
-  _LeaderBoardPage() {
+
+  _LeaderBoardState() {
     GameService.instance.getGames().then(
           (value) => setState(() {
             _game = value.data.first;
@@ -32,10 +33,18 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
   }
 
   @override
+  void initState() {
+    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      setState(() {});
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Leaderboard ' + _game.name),
+        title: Text('Leaderboard ${_game.name}'),
         leading: IconButton(
           onPressed: () {},
           icon: const Icon(Icons.arrow_back_ios),
@@ -66,15 +75,8 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const AddFormPage(),
-            ),
-          ),
-        },
-        tooltip: 'add New Score',
+        onPressed: () => context.go('/form'),
+        tooltip: 'add New User Score',
         child: const Icon(Icons.add),
       ),
     );
