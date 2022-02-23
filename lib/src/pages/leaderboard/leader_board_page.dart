@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:scoremaster/src/models/game_model.dart';
 import 'package:scoremaster/src/models/user_with_score_model.dart';
+import 'package:scoremaster/src/pages/addform/add_form_page.dart';
 import 'package:scoremaster/src/services/score_service.dart';
 import 'widgets/period.dart';
 import 'widgets/first_three.dart';
 import 'widgets/score_list.dart';
 import '../../services/game_service.dart';
+import 'package:go_router/go_router.dart';
 
 class LeaderBoardPage extends StatefulWidget {
   const LeaderBoardPage({Key? key}) : super(key: key);
@@ -27,9 +29,6 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
             _game = value.data.first;
           }),
         );
-  }
-  void _addScore() {
-    setState(() {});
   }
 
   @override
@@ -67,7 +66,14 @@ class _LeaderBoardPage extends State<LeaderBoardPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _addScore,
+        onPressed: () => {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AddFormPage(),
+            ),
+          ),
+        },
         tooltip: 'add New Score',
         child: const Icon(Icons.add),
       ),
