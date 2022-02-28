@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:scoremaster/src/app_spacing.dart';
 import 'package:scoremaster/src/models/user_with_score_model.dart';
+import 'package:localstorage/localstorage.dart';
 
 import '../../../app_theme.dart';
 
 class ScoreListUser extends StatefulWidget {
   final UserWithScoreModel userScore;
+  final int savedScores;
   const ScoreListUser({
     Key? key,
     required this.userScore,
+    required this.savedScores,
   }) : super(key: key);
   @override
   _ScoreListUser createState() => _ScoreListUser();
@@ -16,6 +19,7 @@ class ScoreListUser extends StatefulWidget {
 
 class _ScoreListUser extends State<ScoreListUser> {
   double radiusBackgroundColor = 50;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,7 +45,7 @@ class _ScoreListUser extends State<ScoreListUser> {
           Padding(
             padding: const EdgeInsets.only(right: AppSpacing.l),
             child: Text(
-              widget.userScore.score.score.toString(),
+              widget.savedScores.toString(),
               style: const TextStyle(color: AppColors.accent),
             ),
           ),

@@ -33,8 +33,4 @@ class ScoreService {
 
     return userWithScoreListByGame;
   }
-
-  // Future void insertNewScore() async{
-
-  // }
 }

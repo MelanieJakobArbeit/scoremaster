@@ -38,6 +38,5 @@ class ScoreModel with _$ScoreModel {
     return user.toJson();
   }
 
-  factory ScoreModel.fromJson(Map<String, dynamic> json) =>
-      _$ScoreModelFromJson(json);
+  factory ScoreModel.fromJson(Map<String, dynamic> json) => _$ScoreModelFromJson(json);
 }
