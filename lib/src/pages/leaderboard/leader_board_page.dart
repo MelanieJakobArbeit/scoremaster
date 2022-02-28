@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:scoremaster/src/models/game_model.dart';
 import 'package:scoremaster/src/models/user_with_score_model.dart';
 import 'package:scoremaster/src/services/score_service.dart';
@@ -16,13 +17,12 @@ class LeaderBoardPage extends StatefulWidget {
 
 class _LeaderBoardState extends State<LeaderBoardPage> {
   static const int numberTop = 3;
-
   static const int numberFirstElement = 0;
 
-  List<UserWithScoreModel> _userScore = [];
   List<UserWithScoreModel> _threeTopUser = [];
   GameModel _game = const GameModel(name: '', uid: '');
   List<UserWithScoreModel> userScoreList = [];
+  final LocalStorage storage = LocalStorage('scroes');
 
   _LeaderBoardState() {
     GameService.instance.getGames().then(
@@ -33,12 +33,16 @@ class _LeaderBoardState extends State<LeaderBoardPage> {
   }
 
   @override
-  void initState() {
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-      setState(() {});
-    });
-    super.initState();
-  }
+  //alternative zu FutureBuilder
+  // void initState() {
+  //   WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+  //           (value) => setState(
+  //             () {
+  //             },
+  //         );
+  //   });
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -57,17 +61,27 @@ class _LeaderBoardState extends State<LeaderBoardPage> {
         child: FutureBuilder(
           future: ScoreService.instance.findAllByGameUid(_game.uid).then(
                 (value) => {
-                  _userScore = value.sublist(numberTop),
+                  storage.setItem('scorelist', value),
                   _threeTopUser = value.sublist(numberFirstElement, numberTop),
                 },
               ),
           builder: (context, userSoreSnapshot) {
+            if (userSoreSnapshot.connectionState != ConnectionState.done) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
             return Column(
               children: <Widget>[
                 const Period(),
-                FirstThree(users: _threeTopUser),
+                FirstThree(
+                  users: _threeTopUser,
+                ),
                 Expanded(
-                  child: ScoreList(userScore: _userScore),
+                  child: ScoreList(
+                    storage: storage,
+                  ),
                 ),
               ],
             );
