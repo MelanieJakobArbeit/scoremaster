@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoremaster/src/app_spacing.dart';
 import 'package:scoremaster/src/models/user_with_score_model.dart';
 import 'package:scoremaster/src/pages/leaderboard/widgets/rank.dart';
-import 'package:scoremaster/src/pages/leaderboard/widgets/user_Icon.dart';
+import 'package:scoremaster/src/pages/leaderboard/widgets/user_icon.dart';
 import '../../../app_theme.dart';
 
 class FirstThreeUser extends StatefulWidget {
@@ -23,6 +23,8 @@ class FirstThreeUser extends StatefulWidget {
 }
 
 class _FirstThreeUser extends State<FirstThreeUser> {
+  final int indexBalance = 1;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,7 +34,7 @@ class _FirstThreeUser extends State<FirstThreeUser> {
       ),
       child: Column(
         children: <Widget>[
-          Rank(rank: widget.rank + 1),
+          Rank(rank: widget.rank + indexBalance),
           UserIcon(
             radiusImage: widget.radiusImage,
             radiusBackground: widget.radiusBackground,
@@ -42,7 +44,7 @@ class _FirstThreeUser extends State<FirstThreeUser> {
               top: AppSpacing.l,
               bottom: AppSpacing.xs,
             ),
-            child: Text(widget.user.user.username.toString()),
+            child: Text(widget.user.user.username),
           ),
           Text(
             widget.user.score.score.toString(),
