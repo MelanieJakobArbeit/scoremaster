@@ -6,8 +6,8 @@ class UserIcon extends StatefulWidget {
   final double radiusBackground;
   const UserIcon({
     Key? key,
-    this.radiusImage = 0,
-    this.radiusBackground = 0,
+    required this.radiusImage,
+    required this.radiusBackground,
   }) : super(key: key);
   @override
   _UserIcon createState() => _UserIcon();

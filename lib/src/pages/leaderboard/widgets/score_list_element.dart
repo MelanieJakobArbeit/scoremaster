@@ -27,7 +27,8 @@ class _ScoreListElement extends State<ScoreListElement> {
   final _formKey = GlobalKey<FormState>();
 
   TextEditingController newScoreController = TextEditingController();
-  int score = -1;
+  final int score = -1;
+  final int negativScore = -1;
 
   void _saveNewScore(userId) {
     List<UserWithScoreModel> scoreList = widget.storage.getItem('scorelist');
@@ -60,7 +61,7 @@ class _ScoreListElement extends State<ScoreListElement> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Score von ' + widget.userScore.user.username + ' bearbeiten:'),
+                title: Text('Score von $widget.userScore.user.username bearbeiten:'),
                 content: Form(
                   key: _formKey,
                   child: TextFormField(
@@ -93,7 +94,7 @@ class _ScoreListElement extends State<ScoreListElement> {
                 padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
                 child: ScoreListUser(
                   userScore: widget.userScore,
-                  savedScores: score != -1 ? score : widget.userScore.score.score,
+                  savedScores: score != negativScore ? score : widget.userScore.score.score,
                 ),
               ),
             ],

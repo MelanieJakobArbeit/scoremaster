@@ -3,6 +3,7 @@ import 'package:localstorage/localstorage.dart';
 import 'package:scoremaster/src/models/game_model.dart';
 import 'package:scoremaster/src/models/user_with_score_model.dart';
 import 'package:scoremaster/src/services/score_service.dart';
+import '../../router/score_app_router.dart';
 import 'widgets/period.dart';
 import 'widgets/first_three.dart';
 import 'widgets/score_list.dart';
@@ -33,24 +34,12 @@ class _LeaderBoardState extends State<LeaderBoardPage> {
   }
 
   @override
-  //alternative zu FutureBuilder
-  // void initState() {
-  //   WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-  //           (value) => setState(
-  //             () {
-  //             },
-  //         );
-  //   });
-  //   super.initState();
-  // }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Leaderboard ${_game.name}'),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () => {},
           icon: const Icon(Icons.arrow_back_ios),
           tooltip: 'go back',
           color: Colors.white,
@@ -89,7 +78,7 @@ class _LeaderBoardState extends State<LeaderBoardPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.go('/form'),
+        onPressed: () => context.go(appRoutsList.values.last),
         tooltip: 'add New User Score',
         child: const Icon(Icons.add),
       ),

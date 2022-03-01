@@ -16,7 +16,7 @@ class _Period extends State<Period> {
         children: <Widget>[
           Expanded(
             child: TextButton(
-              onPressed: () {},
+              onPressed: () => {},
               child: const Text('Today'),
               style: TextButton.styleFrom(
                 primary: AppColors.textColor,
@@ -25,7 +25,7 @@ class _Period extends State<Period> {
           ),
           Expanded(
             child: TextButton(
-              onPressed: () {},
+              onPressed: () => {},
               child: const Text('Week'),
               style: TextButton.styleFrom(
                 primary: AppColors.textColor,
@@ -34,7 +34,7 @@ class _Period extends State<Period> {
           ),
           Expanded(
             child: TextButton(
-              onPressed: () {},
+              onPressed: () => {},
               child: const Text('Month'),
               style: TextButton.styleFrom(
                 primary: AppColors.textColor,

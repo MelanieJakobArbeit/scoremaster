@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoremaster/src/app_spacing.dart';
 import 'package:scoremaster/src/models/user_with_score_model.dart';
-import 'package:localstorage/localstorage.dart';
 
 import '../../../app_theme.dart';
 

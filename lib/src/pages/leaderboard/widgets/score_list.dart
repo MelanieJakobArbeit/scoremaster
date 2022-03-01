@@ -16,8 +16,8 @@ class _ScoreList extends State<ScoreList> {
   static const int indexBalancer = 4;
   static const int numberTop = 3;
 
-  refresh() {
-    setState(() {});
+  void refresh() {
+    setState(() => {});
   }
 
   @override
